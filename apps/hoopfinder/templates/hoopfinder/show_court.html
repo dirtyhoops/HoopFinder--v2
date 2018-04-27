@@ -23,16 +23,23 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="#">Maps</a>
-                        <a class="nav-item nav-link" href="#">Users</a>
-                        <a class="nav-item nav-link" href="#">Courts</a>
+                        <a class="nav-item nav-link active" href="/home">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="/map">Maps</a>
+                        <a class="nav-item nav-link" href="/users">Users</a>
+                        <a class="nav-item nav-link" href="/courts">Courts</a>
+                        <a class="nav-item nav-link" href="/registration">Register</a>
+
+                        {%if request.session.userid == 0 %}
+                        <a class="nav-item nav-link" href="/login">Login</a>
+                        {% else %}
                         <a class="nav-item nav-link" href="/logout">Logout</a>
-                        
+                        {% endif %}
                         </div>
                     </div>
                 </nav>
             </div>
+
+
             <!-- API pulling current weather depends on the zipcode of the location of the court -->
             <div class="col-lg-12" id="weatherdiv">
                     <img id="temperatureicon" src="http://openweathermap.org/img/w/{{icon}}.png" alt="">
@@ -116,7 +123,7 @@
                                     {% if x.court_review_by.id == request.session.userid %}
                                     <form action="/delete_review/{{x.id}}" method="post">
                                         {% csrf_token %}
-                                    <button type="submit" class="btn btn-danger btn-sm float-right">Delete</a>
+                                    <button type="submit" class="btn btn-danger btn-sm float-right">Delete</button>
                                     </form>
                                     {% endif %}
                                 </div>

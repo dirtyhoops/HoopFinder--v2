@@ -119,6 +119,8 @@ def add_court(request):
     return redirect('/courts')
 
 def show_court(request, id):
+    if request.session['userid'] == 0:
+        return redirect('/login')
     court = Courts.objects.get(id = id)
     user = User.objects.get(id = request.session['userid'])
     request.session['courtid'] = court.id
@@ -126,8 +128,9 @@ def show_court(request, id):
     json_data = requests.get(api_address).json()
     temperature = json_data['main']['temp']
     ftemperature = (temperature*9)/5 - 459.67
-    reviews = Court_Review.objects.filter(court_reviewed = court)
+    reviews = Court_Review.objects.filter(court_reviewed = court).order_by('-created_at')
     checkedinusers = User.objects.filter(checked_into = court)
+
 
 
     context = {
@@ -194,3 +197,10 @@ def delete_review(request, id):
         review = Court_Review.objects.get(id = id)
         review.delete()
     return redirect('/courts/' + str(request.session['courtid']))
+
+
+def delete_court(request, id):
+    if request.method == 'POST':
+        court = Courts.objects.get(id = id)
+        court.delete()
+    return redirect('/courts')

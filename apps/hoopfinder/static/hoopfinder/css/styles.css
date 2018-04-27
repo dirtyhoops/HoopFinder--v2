@@ -3,7 +3,7 @@
 
 .courtthumbnail {
     width: 256px;
-    height: 265px;
+    height: 300px;
 
 }
 
@@ -13,7 +13,6 @@
     border: 1px solid rgb(121, 117, 117);
     border-radius: 5px;
     box-shadow: 0px 0px 0px 1px rgba(54, 40, 40, 0.3);   
-
 }
 
 .courtthumbnail a {
@@ -22,6 +21,10 @@
 
 .courtsdiv {
 margin: 1px;
+}
+
+.courtdeletediv {
+    margin-top: -10px;
 }
 
 /**************************** REGISTRATION AND LOGIN CSS ****************************/
