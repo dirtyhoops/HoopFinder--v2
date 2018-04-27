@@ -129,7 +129,7 @@ def show_court(request, id):
     temperature = json_data['main']['temp']
     ftemperature = (temperature*9)/5 - 459.67
     reviews = Court_Review.objects.filter(court_reviewed = court).order_by('-created_at')
-    checkedinusers = User.objects.filter(checked_into = court)
+    # checkedinusers = User.objects.filter(checked_into = court)
     created_events = Event.objects.filter(court = id)
 
 
@@ -141,7 +141,7 @@ def show_court(request, id):
         "icon": json_data['weather'][0]['icon'],
         "court": court,
         "reviews": reviews,
-        "checkedinusers": checkedinusers,
+        # "checkedinusers": checkedinusers,
         "user": user,
         "created_events": created_events
     }
@@ -219,11 +219,11 @@ def add_event_process(request, court_id):
         return redirect('/courts/'+ court_id)
 
 def show_event(request, event_id):
-    if request.method == 'POST':
-        event = Event.objects.get(id = court_id)
+    event = Event.objects.get(id = event_id)
 
-        context = {
-            'event': event
-        }
+    context = {
+        'event': event,
+        
+    }
 
-        return render(request, "hoopfinder/events.html", context)
+    return render(request, "hoopfinder/events.html", context)

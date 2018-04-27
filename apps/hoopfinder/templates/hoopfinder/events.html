@@ -14,34 +14,49 @@
 
         <!-- make the navigation bar on its own file and just attach it in every page -->
     
-        <div class="container" id="eventsbody">
-                <div class = "navigationbar">
-                        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                            <a class="navbar-brand" href="#">HoopFinder!</a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                                <div class="navbar-nav">
-                                <a class="nav-item nav-link active" href="/home">Home <span class="sr-only">(current)</span></a>
-                                <a class="nav-item nav-link" href="/maps">Maps</a>
-                                <a class="nav-item nav-link" href="/users">Users</a>
-                                <a class="nav-item nav-link" href="/courts">Courts</a>
-                                <a class="nav-item nav-link" href="/registration">Register/a>
-                                <a class="nav-item nav-link" href="/login">Login</a>
-                                <a class="nav-item nav-link" href="/logout">Logout</a>
-                                
-                                </div>
-                            </div>
-                        </nav>
+    
+        <div class="container" id="courtsbody">
+            <div class = "navigationbar">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <a class="navbar-brand" href="#">HoopFinder!</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="#">Maps</a>
+                        <a class="nav-item nav-link" href="#">Users</a>
+                        <a class="nav-item nav-link" href="#">Courts</a>
+                        <a class="nav-item nav-link" href="/logout">Logout</a>
+                        
+                        </div>
                     </div>
+                </nav>
+            </div>
+            <!-- API pulling current weather depends on the zipcode of the location of the court -->
+            <div class="col-lg-12" id="weatherdiv">
+                    <img id="temperatureicon" src="http://openweathermap.org/img/w/{{icon}}.png" alt="">
+                    <p id="temperaturep" class="text-capitalize">{{ftemperature|floatformat:2}}°F {{description}}</p> 
+            </div>
+        
+
+
+<!-- http://api.openweathermap.org/data/2.5/weather?appid=49a76676e913deb3805b87568bba047f&zip=94040 -->
+
             
             <div class="eventsdiv">
-
-
-    
+                <br>
+                <h1>{{event.name}}</h1>
+                <ul>
+                    <h3>{{event.date}}<h3>
+                    <h3>{{event.time}}pm</h3>
+                    <h3>Hosted by: {{event.created_by.first_name}} {{event.created_by.last_name}}</h3>
+                    <button aria-expanded="true" aria-controls="collapseOne">Join</button>
+                </ul>
             </div>     <!-- end of eventsdiv -->
-        </div>      <!-- end of container and id=ceventsbody -->
+        </div>     
+        <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=12&center=37.5641%2C-122.0042&key=AIzaSyAZ_3ojpys3Eq9gHR51t6VpYbNpTo1GMwg" allowfullscreen></iframe> <!-- end of container and id=ceventsbody -->
 
     </body>
 </html>

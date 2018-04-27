@@ -67,7 +67,7 @@ class Courts(models.Model):
     state = models.CharField(max_length=2)
     zipcode = models.CharField(max_length=5)
     imagelink = models.CharField(max_length=100)
-    checked_in_user = models.ForeignKey(User, related_name="checked_into")
+    # checked_in_user = models.ForeignKey(User, related_name="checked_into")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
