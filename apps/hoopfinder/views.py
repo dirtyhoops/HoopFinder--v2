@@ -223,7 +223,7 @@ def show_event(request, event_id):
 
     context = {
         'event': event,
-        
+
     }
 
     return render(request, "hoopfinder/events.html", context)
