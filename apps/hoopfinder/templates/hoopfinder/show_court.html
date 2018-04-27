@@ -67,9 +67,67 @@
                                 <p>Reviews: 5</p>
                             </div>
                         </div>
-                        <div class="mapdiv">
-                            <p>map goes here</p>
-                        </div>
+                        <script>
+                            // This example requires the Places library. Include the libraries=places
+                            // parameter when you first load the API. For example:
+                            // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+                      
+                            var map;
+                            var infowindow;
+                      
+                            function initMap() {
+                              var pyrmont = {lat: 37.376628, lng: -121.909902};
+                      
+                              map = new google.maps.Map(document.getElementById('map'), {
+                                center: pyrmont,
+                                zoom: 13
+                              });
+                      
+                              infowindow = new google.maps.InfoWindow();
+                              var service = new google.maps.places.PlacesService(map);
+                              service.nearbySearch({
+                                location: pyrmont,
+                                radius: 100000,
+                                type: ['park']
+                              }, callback);
+                            }
+                      
+                            function callback(results, status) {
+                              if (status === google.maps.places.PlacesServiceStatus.OK) {
+                                for (var i = 0; i < results.length; i++) {
+                                  createMarker(results[i]);
+                                }
+                              }
+                            }
+                      
+                            function createMarker(place) {
+                              var placeLoc = place.geometry.location;
+                              var marker = new google.maps.Marker({
+                                map: map,
+                                position: place.geometry.location
+                              });
+                      
+                              google.maps.event.addListener(marker, 'click', function() {
+                                infowindow.setContent(place.name);
+                                infowindow.open(map, this);
+                              });
+                            }
+                          </script>
+
+
+                        <br>
+
+                    <div id="map" >
+                            <iframe
+                            width="260"
+                            height="310"
+                            frameborder="0" style="border:0"
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAZ_3ojpys3Eq9gHR51t6VpYbNpTo1GMwg&q={{court.address}}, {{court.city}}" allowfullscreen>
+                            
+                                             
+                        
+                          </iframe>
+                    </div>
                         <p>location: {{court.address}}, {{court.city}}, {{court.state}}. {{court.zipcode}}</p>
 
                     </div>
@@ -96,7 +154,7 @@
                                     <div class="reviewauthorimage">
                                         <img class="reviewimage" src="../static/hoopfinder/img/usericon2.png" alt="">
                                     </div>
-                                    <p class ="userreviewname"><a class ="text-capitalize" href="#">{{x.court_review_by.first_name}} {{ x.court_review_by.last_name|slice:"1" }}.</a></p>
+                                    <p class ="userreviewname"><a class ="text-capitalize" href="/user/{{x.court_review_by.id}}">{{x.court_review_by.first_name}} {{ x.court_review_by.last_name|slice:"1" }}.</a></p>
                                     <p>San Jose, CA</p>
                                     <p>Rating: ★★★★★</p>
                                 </div>
