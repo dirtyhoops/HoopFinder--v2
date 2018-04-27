@@ -100,7 +100,7 @@ def login_post(request):
 
 def logout(request):
     request.session.clear()
-    return redirect('/')
+    return redirect('/home')
 
 def new_court(request):
     return render(request, "hoopfinder/new_court.html")
@@ -198,9 +198,30 @@ def delete_review(request, id):
         review.delete()
     return redirect('/courts/' + str(request.session['courtid']))
 
-
 def delete_court(request, id):
     if request.method == 'POST':
         court = Courts.objects.get(id = id)
         court.delete()
     return redirect('/courts')
+
+def add_event_process(request, court_id):
+    if request.method == 'POST':
+        user = User.objects.get(id = request.session['userid'])
+        court = Courts.objects.get(id = court_id)
+        name = request.POST['title']
+        date = request.POST['date']
+        time = request.POST['time']
+
+        Event.objects.create(name = name, date = date, time = time, court = court, created_by = user)
+
+
+        return redirect('/courts/'+ court_id)
+def show_event(request, event_id):
+    if request.method == 'POST':
+        event = Event.objects.get(id = court_id)
+
+        context = {
+            'event': event
+        }
+
+        return render(request, "hoopfinder/events.html", context)

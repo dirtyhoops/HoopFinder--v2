@@ -51,9 +51,6 @@ class UserManager(models.Manager):
 
 # build a validator for adding new courts
 
-
-
-
 class User(models.Model):
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
@@ -62,7 +59,6 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
-
 
 class Courts(models.Model):
     name = models.CharField(max_length=50)
@@ -74,8 +70,6 @@ class Courts(models.Model):
     checked_in_user = models.ForeignKey(User, related_name="checked_into")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
-
 
 class Court_Review(models.Model):
     court_review = models.TextField()
@@ -89,5 +83,14 @@ class UserReviews(models.Model):
     review = models.TextField()
     reviewed_user = models.ForeignKey(User, related_name="personal_reviews")
     reviewed_by = models.ForeignKey(User, related_name="user_reviews")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class Event(models.Model):
+    name = models.CharField(max_length=255)
+    date = models.DateField()
+    time = models.CharField(max_length=255)
+    court = models.ForeignKey(Courts, related_name="court_events")
+    created_by = models.ForeignKey(User, related_name="created_events")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

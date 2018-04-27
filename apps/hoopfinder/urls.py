@@ -21,5 +21,7 @@ urlpatterns = [
     url(r'^user/(?P<user_id>\d+)$', views.user_page),
     url(r'^add_user_review$', views.add_user_review),
     url(r'^delete_review/(?P<id>\d+)$', views.delete_review),
-    url(r'^delete_court/(?P<id>\d+)$', views.delete_court)
+    url(r'^delete_court/(?P<id>\d+)$', views.delete_court),
+    url(r'^add_event/(?P<court_id>\d+)$', views.add_event_process),
+    url(r'^events/(?P<event_id>\d+)$', views.show_event)
 ]  

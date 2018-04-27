@@ -169,44 +169,61 @@
                             </ul>
                         </div>
                         <div class="courtevent">
-                            <div class="eventheader">
-                                <p>Upcoming Games</p>
+                                <div class="eventheader">
+                                    <p>Upcoming Games</p>
+                                </div>
+                                <div class="eventbuttons">
+                                    {% for event in created_events %}
+                                    <a href="/events/{{event.id}}" class="btn btn-outline-dark btn-sm btn-block">{{event.name}} {{event.date}}</a>
+                                    {% endfor %}
+                                    <br> 
+                                    <div style="display: inline-block">
+                                        <br>
+                                        <div id="accordion" style="width:255px;" >
+                                            <div class="card">
+                                                <div class="card-header" id="headingOne" style="background-color: #343a40; color: white">
+                                                    <h5 class="mb-0">
+                                                        <button class="btn btn-link" style=" color: white" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                            Create an Event
+                                                        </button>
+                                                    </h5>
+                                                </div>
+                                                
+                                                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                                    <form action="/add_event/{{ court.id }}" method="post">
+                                                        {% csrf_token %}
+                                                        <div class="card-body" style="padding: 5px 5px 5px 5px">
+                                                            <div class="input-group input-group-sm mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text" id="inputGroup-sizing-sm">Name:</span>
+                                                                </div>
+                                                                <input type="text" class="form-control" name="title" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                                            </div>
+                                                            <div class="input-group input-group-sm mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text" id="inputGroup-sizing-sm">Date:</span>
+                                                                </div>
+                                                                <input type="date" class="form-control"  name ="date" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                                            </div>
+                                                            <div class="input-group input-group-sm mb-3">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text" id="inputGroup-sizing-sm">Time:</span>
+                                                                </div>
+                                                                <input type="time" class="form-control" name ="time"  aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+                                                            </div>
+                                                        </div>
+                                                        <input type="submit" class="btn btn-outline-dark btn-sm btn-block" aria-label="Small" aria-describedby="inputGroup-sizing-sm" value="Submit">
+                                                    </form>
+                                                </div>
+                                            </div>              
+                                        </div>
+                                   </div>
+                                </div>
                             </div>
-                            <div class="eventbuttons">
-                                <button type="button" class="btn btn-outline-dark btn-sm btn-block">April 29, 2018   4:00PM</button>
-                                <button type="button" class="btn btn-outline-dark btn-sm btn-block">April 30, 2018   3:30PM</button>
-                                <button type="button" class="btn btn-outline-dark btn-sm btn-block">May, 2 2018   12:00PM</button>
-                                <button type="button" class="btn btn-outline-dark btn-sm btn-block">May 4, 2018   9:00AM</button>
-                                <button type="button" class="btn btn-dark btn-sm btn-block">Create an Event</button>
-                            
-                            </div>
-                        </div>
+                        </div>                  
                     </div>
-
-
-                    
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-            </div>
-
-
-
-
-
-
-
-
-        </div>      <!-- end of container -->
+            </div>      <!-- end of container -->
 
 
 
