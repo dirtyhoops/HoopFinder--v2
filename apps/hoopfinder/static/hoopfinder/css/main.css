@@ -1,0 +1,46 @@
+body{
+    background-image: linear-gradient(to bottom, #000000, #1b0d16, #27162b, #282246, #043264);
+
+}
+
+.thumbnail{
+    width: 265px;
+    height: 400px;
+    margin: 0px;
+}
+.thumb_image{
+    height: 150px;
+}
+.main{
+    background-color: aliceblue;
+    box-shadow: 0px 4px 15px 5px #888888;
+}
+.carousel {
+    position: relative;
+    width: 1000px;
+    margin: auto;
+}
+.thumbnail_features{
+    margin-top: 0px;
+    margin-left: 22px;
+}
+.card_box{
+    display: inline-block;
+    
+}
+.card-img-top{
+    height: 200px;
+}
+.thumbnail_box{
+    margin-left: 40px; 
+}
+
+#map {
+    height: 400px;
+    width: 75%;
+
+    margin: auto;
+}
+
+
+

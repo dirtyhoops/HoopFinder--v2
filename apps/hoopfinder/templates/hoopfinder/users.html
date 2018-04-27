@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- google map api = AIzaSyBDrQTLucGMc_Mf1NBAj4GoelgPyS9UWjU -->
+
+    <title>HoopFinder</title>
+    <!-- {% load static %} -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="../../static/hoopfinder/css/user-dashboard.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+    <div class="container">
+        <div class = "navigationbar">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="/home">HoopFinder!</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="/home">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="/map">Maps</a>
+                    <a class="nav-item nav-link" href="/user_dashboard">Users</a>
+                    <a class="nav-item nav-link" href="/courts">Courts</a>
+                    <a class="nav-item nav-link" href="#">Logout</a>
+                    
+                    </div>
+                </div>
+            </nav>
+        </div> <!-- end of nav bar -->
+        <br>
+        <div class="main">
+            <br>
+            <div id="Newest Members" style="width:250px; padding: 5px; display:inline-block">
+                <h4>Newest Members</h4>
+                {% for users in all_users %}
+                <div style="display: inline-block; vertical-align: middle; margin: 10px;">
+                    <img src="../../static/hoopfinder/img/klay.jpg" alt="" style="height:50px; width:50px; border-radius: 50px;">
+                    <p style=" text-align: center">{{users.first_name}}</p>
+                </div>
+                {% endfor %}
+            </div> <!-- end newest members -->
+
+            <div class="main_middle" style="display: inline-block; vertical-align: top; background-color:rgb(218, 217, 217); width: 635px;">
+                <h4>Users</h4>
+                <div id="all_users"  >
+                    <table class="table">
+                        {% for users in all_users %}
+                        <tr>
+                            <td>
+                                <img src="../../static/hoopfinder/img/klay.jpg" alt="" style="height:50px; width:50px; border-radius: 50px;">
+                            </td>
+                            <td style="text-align:left">
+                                <a href="user/{{users.id}}"><p class="text-capitalize" style=" text-align: left; width: 20x; margin: 0px" >{{users.first_name}}</p></a>
+                                Player Rating: *****
+                            </td>
+                            <td style="text-align: right;">
+                                {{users.created_at}}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <div id="right_panel" style="display:inline-block">
+                
+                <img src="../../static/hoopfinder/img/dojoad.png" style="width:210px; display:inline-block" alt="">
+            </div>
+
+
+
+        </div>
+
+
+    </div> <!-- end container -- >
+</body>
+</html>

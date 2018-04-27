@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HoopFinder</title>
+        <!-- {% load static %} -->
+        <!-- <link rel="stylesheet" type="text/css" href="{% static 'hoopfinder/css/styles.css' %}"> -->
+        <link rel="stylesheet" type="text/css" href="../../static/hoopfinder/css/styles.css">
+    
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+        
+    </head>
+    <body>
+
+        <!-- make the navigation bar on its own file and just attach it in every page -->
+    
+        <div class="container" id="courtsbody">
+            <div class = "navigationbar">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <a class="navbar-brand" href="#">HoopFinder!</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="#">Maps</a>
+                        <a class="nav-item nav-link" href="#">Users</a>
+                        <a class="nav-item nav-link" href="#">Courts</a>
+                        <a class="nav-item nav-link" href="/logout">Logout</a>
+                        
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <!-- API pulling current weather depends on the zipcode of the location of the court -->
+            <div class="col-lg-12" id="weatherdiv">
+                    <img id="temperatureicon" src="http://openweathermap.org/img/w/{{icon}}.png" alt="">
+                    <p id="temperaturep" class="text-capitalize">{{ftemperature|floatformat:2}}°F {{description}}</p> 
+            </div>
+        
+
+            <div class="showcourtmaindiv">
+                <div class ="row">
+                    <div class="col-lg-3" id="leftcontentcourt">
+                        <div class="userinfodiv">
+                            <div class="userpicture">
+                                <img class="usericon" src="../static/hoopfinder/img/usericon.png">
+                            </div>
+                            <div class="userinfo">
+                                <p class="text-capitalize">Name: {{user.first_name}} {{user.last_name}}</p>
+                                <p>Location: San Jose, CA</p>
+                                <p>Rating:
+                                    <!-- run a for loop to and iterate it depends on the ratings. floor.math -->
+                                <img class = "ratingball" src="../static/hoopfinder/img/ball.png">
+                                <img class = "ratingball" src="../static/hoopfinder/img/ball.png">
+                                <img class = "ratingball" src="../static/hoopfinder/img/ball.png">
+                                <img class = "ratingball" src="../static/hoopfinder/img/ball.png">
+                                <img class = "ratingball" src="../static/hoopfinder/img/ball.png">
+                                <p>Reviews: 5</p>
+                            </div>
+                        </div>
+                        <div class="mapdiv">
+                            <p>map goes here</p>
+                        </div>
+                        <p>location: {{court.address}}, {{court.city}}, {{court.state}}. {{court.zipcode}}</p>
+
+                    </div>
+
+                    <div class="col-lg-6" id="maincontentcourt">
+                        <div class="courtimagediv">
+                            <img id="courtimg" src ="{{court.imagelink}}" alt="">
+                        </div>
+                        <div class="maincontenttext">
+                            <p class="text-capitalize">Court's Name: {{court.name}}</p>
+                            <p>Rating:
+                            <img class = "ratingball2" src="../static/hoopfinder/img/ball2.png">
+                            <img class = "ratingball2" src="../static/hoopfinder/img/ball2.png">
+                            <img class = "ratingball2" src="../static/hoopfinder/img/ball2.png">
+                            <img class = "ratingball2" src="../static/hoopfinder/img/ball2.png">
+                            <img class = "ratingball2" src="../static/hoopfinder/img/ball2.png">
+                        </div>
+
+                        <div class="courtreviewdiv">
+                        <!-- gets all the reviews for the courts -->
+                        {% for x in reviews %}
+                        <div class="rowreview">
+                                <div class="reviewauthor">
+                                    <div class="reviewauthorimage">
+                                        <img class="reviewimage" src="../static/hoopfinder/img/usericon2.png" alt="">
+                                    </div>
+                                    <p class ="userreviewname"><a class ="text-capitalize" href="#">{{x.court_review_by.first_name}} {{ x.court_review_by.last_name|slice:"1" }}.</a></p>
+                                    <p>San Jose, CA</p>
+                                    <p>Rating: ★★★★★</p>
+                                </div>
+                                <div class="reviewtext">
+                                    <div class="reviewratedate">
+                                        <div class="reviewstar">
+                                        {% if x.rating == 1 %}
+                                        <p class="star"> ★</p>
+                                        {%  elif x.rating == 2 %}
+                                            <p class="star"></p> ★★</p>
+                                        {% elif x.rating == 3 %}
+                                            <p class="star"> ★★★</p>
+                                        {%  elif x.rating == 4 %}
+                                            <p class="star"> ★★★★</p>
+                                        {%  elif x.rating == 5 %}
+                                            <p class="star">  ★★★★★</p>
+                                        {%endif%}
+                                        </div>
+                                        <div class="reviewdate">
+                                            <p>{{x.created_at}}</p> 
+                                        </div>
+                                    </div>
+                                    <p>{{x.court_review}}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <div class="reviewbox">
+                                <form action="/review_court" method="post">
+                                {% csrf_token %}
+                                    <label class="reviewlabel">Write a review:</label>
+                                    <div class="radios">
+                                        <label class="radio-inline"><input type="radio" name="optrating" value="1"> 1 star</label>
+                                        <label class="radio-inline"><input type="radio" name="optrating" value="2"> 2 stars</label>
+                                        <label class="radio-inline"><input type="radio" name="optrating" value="3"> 3 stars</label>
+                                        <label class="radio-inline"><input type="radio" name="optrating" value="4"> 4 stars</label>
+                                        <label class="radio-inline"><input type="radio" name="optrating" value="5"> 5 stars</label>
+                                    </div>    
+                                    <div class="form-group">
+                                        <textarea id="reviewtextarea" class="form-control" style="font-size: 14px" name="courtreview" rows="3"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-dark btn-sm float-right">Submit</button>      
+                                </form>
+                            </div>
+                        </div>   <!--end of courtreviewdiv-->
+                    </div>   <!-- end of maincontentcourt -->
+
+                    <div class="col-lg-3" id="rightcontentcourt">
+                        <div class="playersonline">
+                            <!-- hard coded number, change it later -->
+                            <p>Online Hoopers: 5</p> 
+                            <form action="/checkin" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-dark btn-sm">Check In</button>
+                            </form>
+                            
+                        </div>
+                        <div class="currentplayersonline">
+                            <p>Current Online Hoopers:</p>
+                            <ul>
+                                {% for y in checkedinusers %}
+                                <li class="text-capitalize">{{y.first_name}}  {{y.last_name}}       *****</li>
+                                {% endfor %}
+        
+                            </ul>
+                        </div>
+                        <div class="courtevent">
+                            <div class="eventheader">
+                                <p>Upcoming Games</p>
+                            </div>
+                            <div class="eventbuttons">
+                                <button type="button" class="btn btn-outline-dark btn-sm btn-block">April 29, 2018   4:00PM</button>
+                                <button type="button" class="btn btn-outline-dark btn-sm btn-block">April 30, 2018   3:30PM</button>
+                                <button type="button" class="btn btn-outline-dark btn-sm btn-block">May, 2 2018   12:00PM</button>
+                                <button type="button" class="btn btn-outline-dark btn-sm btn-block">May 4, 2018   9:00AM</button>
+                            
+                            </div>
+                        </div>
+                    </div>
+
+
+                    
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+        </div>      <!-- end of container -->
+
+
+
+
+    </body>
+</html>
+    
+
+
+
+
+
+<!-- 49a76676e913deb3805b87568bba047f      -------- api key for open weather -->
+
+<!-- http://api.openweathermap.org/data/2.5/weather?appid=49a76676e913deb3805b87568bba047f&zip=94040 -->

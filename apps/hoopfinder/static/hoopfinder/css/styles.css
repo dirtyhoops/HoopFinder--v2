@@ -1,0 +1,314 @@
+
+/****************************** courts.html CSS *******************************/
+
+.courtthumbnail {
+    width: 256px;
+    height: 265px;
+
+}
+
+.courtthumbnail img {
+    width: 248px;
+    height: 220px;
+    border: 1px solid rgb(121, 117, 117);
+    border-radius: 5px;
+    box-shadow: 0px 0px 0px 1px rgba(54, 40, 40, 0.3);   
+
+}
+
+.courtthumbnail a {
+    color: black;
+}
+
+.courtsdiv {
+margin: 1px;
+}
+
+/**************************** REGISTRATION AND LOGIN CSS ****************************/
+.registrationdiv {
+    width: 400px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: rgb(242, 243, 247)
+}
+
+.logindiv {
+    width: 400px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: rgb(242, 243, 247)
+}
+
+
+/* decide on what color all body is, rn court is grayish and registration and login is light blueish */
+#registrationbody, #loginbody{
+    background-color: rgba(44, 195, 241, 0.658);
+    height: 100%;
+    overflow: auto;
+}
+
+#courtsbody {
+    background-color:rgb(204, 193, 193);
+}
+
+.center-block {
+  display: block;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.boxmargin{
+   width: 90%;
+   margin: 5px auto 30px;
+}
+
+.registrationdiv h3, .logindiv h3 {
+    text-align: center;
+    color: rgb(99,99,99);
+    margin: 20px;
+}
+
+span.input-group-addon i {
+    color: #6bb0cc;
+    font-size: 19px;
+    margin: 5px 8px 5px 8px;
+}
+
+#iconmargin {
+    margin: 0px 3px; 
+}
+
+#iconmargin1 {
+    margin: 0px 2px 0px 3px; 
+}
+
+
+.form-control {
+    padding: 7px 10px;
+}
+
+.input-group {
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21);
+}
+
+.signinp {
+    margin-top: 6px;
+    font-size: 15px;
+}
+
+html, body {
+    height: 100%;
+  }
+
+body {
+    min-height: 100%;
+}
+
+
+
+/****************************** show_courts.html CSS *******************************/
+#weatherdiv { 
+height: 80px;
+background-color:  rgb(204, 193, 193);
+}
+
+.showcourtmaindiv {
+    background-color:rgb(204, 193, 193);
+    width: 100%;
+    height: 100%;
+}
+
+#leftcontentcourt {
+    background-color:rgb(204, 193, 193);
+    height: 100%;
+    width: 100%;
+}
+
+#maincontentcourt {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(202, 202, 202);
+}  
+
+#rightcontentcourt {
+    height: 900px;
+    width: 100%;
+    background-color: rgb(204, 193, 193);
+}
+
+#temperaturep {
+    font-size: 25px;
+    margin-top: 15px;
+}
+
+#temperaturep, #temperatureicon {
+    display: inline-block;
+}
+#temperatureicon {
+    width: 70px;
+}
+
+#weatherdiv {
+    vertical-align: middle;
+}
+.courtimagediv {
+    margin-top: 15px;   
+}
+
+.maincontenttext {
+    text-align: center;
+    margin-top: 7px;
+    border-bottom: 1px solid rgb(189, 172, 172);
+    font-size: 18px;
+}
+
+.maincontenttext p {
+    margin: 3px;
+}
+
+#courtimg {
+    width: 540px;
+    border:1px solid rgba(78, 4, 4, 0.452);
+}
+
+.reviewauthor {
+    width: 25%;
+    font-size: 13px;
+    margin-left: 5px;
+}
+
+.reviewauthor p {
+    margin: 0;
+}
+
+.reviewtext {
+    width: 70%;
+    font-size: 13px;
+    vertical-align: top;
+}
+
+.reviewauthor, .reviewtext {
+    display: inline-block;
+}
+
+.rowreview {
+    padding: 8px 0px 5px 0px;
+    border-bottom: 1px solid rgb(189, 172, 172);
+}
+
+.reviewbox {
+    margin-top: 20px;
+}
+
+.userreviewname {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.reviewbox {
+font-size: 14px;
+}
+
+.userpicture {
+    text-align: center;
+}
+
+.usericon {
+    margin: 10px 0px;
+    width: 115px;
+    border-radius: 60px;
+    border: 7px outset rgb(163, 133, 133);
+}
+
+.userinfo p {
+    margin: 3px;
+    font-size: 15px;
+    margin-left: 15px;
+}
+
+.userinfodiv {
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgb(189, 172, 172);
+}
+
+.mapdiv {
+    height: 300px;
+    width: 100%;
+    margin-top: 20px;
+    background-color: rgb(97, 93, 93);
+    border: 2px solid gray;
+}
+
+.playersonline {
+    margin-top: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgb(189, 172, 172);
+}
+
+.currentplayersonline {
+    padding-top: 5px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgb(189, 172, 172);
+}
+
+.currentplayersonline p, .eventheader p{
+    margin: 2px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.currentplayersonline li {
+    margin: -2px;
+    margin-left: -25px;
+    font-size: 14px;
+}
+
+li {
+    list-style: none;
+}
+
+.reviewratedate {
+    width: 90%;
+}
+
+.reviewdate, .reviewstar {
+    display: inline-block;
+}
+
+.reviewstar {
+    width: 23%;
+}
+
+.eventheader {
+    margin-top: 10px;
+}
+
+.eventheader p {
+    margin-bottom: 5px;
+}
+
+.reviewimage {
+    width: 65px;
+    border-radius: 60px;
+    border: 3px outset rgb(163, 133, 133);
+}
+
+.ratingball {
+    width: 15px;
+}
+
+.ratingball2 {
+    width: 22px;
+}
+
+.star {
+    font-size: 17px;
+}
+
+.radios {
+    display: inline-block;
+    margin-left: 10px;
+}
+

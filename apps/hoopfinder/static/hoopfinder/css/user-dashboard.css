@@ -1,0 +1,31 @@
+.main{
+    border: 1px solid;
+    min-height: 400px;
+    background-color: rgb(38, 108, 170);
+    box-shadow: 0px 4px 15px 5px #888888;
+    background-image: linear-gradient(to bottom, #ffffff, #eeeeee, #dddddd, #cccccc, #bbbbbb);
+}
+.user_profile{
+    margin: 10px;
+}
+.top_10_courts{
+    width:200px;
+    border: 1px solid;
+    min-height: 400px;
+    box-shadow: 0px 4px 15px 5px #7b7a7a;
+    color: black;
+    background-image: linear-gradient(to top, #ffffff, #cecece, #9e9e9e, #727272, #484848);
+    display: inline-block;
+
+}
+.user_info{
+    vertical-align: top;
+}
+.reviews{
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+
+    padding: 15px;
+    
+}

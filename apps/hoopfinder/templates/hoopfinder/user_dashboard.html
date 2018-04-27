@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- google map api = AIzaSyBDrQTLucGMc_Mf1NBAj4GoelgPyS9UWjU -->
+
+    <title>HoopFinder</title>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="../../static/hoopfinder/css/user-dashboard.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+    <div class="container">
+        <div class = "navigationbar">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="/home">HoopFinder!</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="/home">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="/map">Maps</a>
+                    <a class="nav-item nav-link" href="/user_dashboard">Users</a>
+                    <a class="nav-item nav-link" href="/courts">Courts</a>
+                    <a class="nav-item nav-link" href="/logout">Logout</a>
+                    
+                    </div>
+                </div>
+            </nav>
+        </div> <!-- end of nav bar -->
+        <br>
+        <div class="main" >
+            <div class="align-self-baseline" style="margin:10px;">
+                <img src="../../static/hoopfinder/img/playericon.png" style="display: inline-block">
+                
+                <div class="user_profile" style="display: inline-block; vertical-align:top;">
+                    <div class="user_info" style="display: inline-block;">
+                        <h3 class="text-capitalize">{{user.first_name}} {{user.last_name}}</h3>
+                        <div class="user_info">
+                            <div style="display: inline-block;">
+                                <h6>About -</h6>
+                                <h6>Member since -</h6>
+                            </div>
+                            <div style="display: inline-block; margin-left:100px;">
+                                <h6>Age -</h6>
+                                <h6>Height -</h6>
+                                <h6>Position -</h6>
+                            </div>
+                            <div style="display: inline-block; margin-left:100px;">
+                                <h6>Gender - </h6>
+                                <h6>City -   </h6>
+                                <h6>Country -</h6>
+                            </div>
+                        </div>
+                    </div> <!-- end user info -->
+                </div>
+            </div>
+                
+                <br>
+                <br>
+            <div class="d-flex justify-content-around">
+                <div id="friends" style="width: 227px; padding: 20px;">
+                    <h4>Friends (4)</h4>
+                   <div>
+                        <p><a href="" style="color: black">Daryll</a></p>
+                        <p><a href="" style="color: black">Jacky</a></p>
+                        <p><a href="" style="color: black">Greg</a></p>
+                        <p><a href="" style="color: black">Anna</a></p>
+                   </div>
+                   <hr>
+                   <img src="../../static/hoopfinder/img/dojoad.png" style="width:190px;" alt="">
+                </div>
+                <div class="reviews" style="display: inline-block; vertical-align:top; margin: 5px; border: 1px solid"> 
+                    <h4>Post on <span class="text-capitalize">{{user.first_name}}'s</span> wall</h4>
+                    {% for review in user_reviews %}
+                    <div class="users_reviews">       
+                        <div class="fav_courts">
+                            <div style="display: inline-block; vertical-align: middle; margin: 10px;">
+                                <img src="../../static/hoopfinder/img/klay.jpg" alt="" style="height:75px; width:75px; border-radius: 50px;">
+                                <a href=""><p class="text-capitalize" style=" text-align: center">{{ review.reviewed_by.first_name }}</p></a>
+                            </div>
+                            <h6 style="display: inline-block; vertical-align: middle; width: 510px; border: 1px solid grey; border-radius: 20px; padding: 10px; background-color:rgb(221, 221, 221)" >{{review.review}}</h6>
+                        </div>
+                    </div>
+                   {% endfor %}
+                    <!-- Review Form -->
+                <form action="/add_user_review" method="post">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <textarea class="form-control" name="review" aria-label="With textarea" placeholder="Write a review"></textarea>
+                    </div>        
+                    <br>
+                    <div class="d-flex justify-content-end">
+                        <input type="hidden" name="reviewed_user" value="{{user.id}}">
+                        <button type="submit" class="btn btn-primary btn-sm">Submit Review</button>
+                    </div>                                
+                </form>
+                    <!-- end review form -->
+                <hr>
+                <h4>Add your favorite courts</h4>
+                <p>Add all the courts that you have visited and even all of your favorite courts. <a href="">Add courts</a></p>
+                <div class="fav_courts">
+                    <div style="display: inline-block; height:150px; width:150px; vertical-align: middle;background-color: black; margin: 10px;"></div>
+                        <div class="court_desc" style="display: inline-block; vertical-align: middle; width: 370px;">
+                            <h6>Name: Flickenger Park</h6>
+                            <h6>Rating: *****</h6>
+                            <h6>Latest Review: This court is really ghetto and I can tell that there is alot of gang activity here.</h6>
+                        </div>
+                    </div>
+                <div class="fav_courts">
+                    <div style="display: inline-block; height:150px; width:150px; vertical-align: middle;background-color: black; margin: 10px;"></div>
+                        <div class="court_desc" style="display: inline-block; vertical-align: middle; width: 370px;">
+                            <h6>Name: Blakow Park</h6>
+                            <h6>Rating: *****</h6>
+                            <h6>Latest Review: This court is really ghetto and I can tell that there is alot of gang activity here.</h6>
+                        </div>
+                    </div>
+                <div class="fav_courts">
+                    <div style="display: inline-block; height:150px; width:150px; vertical-align: middle;background-color: black; margin: 10px;"></div>
+                        <div class="court_desc" style="display: inline-block; vertical-align: middle; width: 370px;">
+                            <h6>Name: Brokaw Park</h6>
+                            <h6>Rating: *****</h6>
+                            <h6>Latest Review: This court is really ghetto and I can tell that there is alot of gang activity here.</h6>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin: 10px; display: inline-block">
+                    <div id="accordion" style="width: 200px;" >
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Top Five Courts
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+                                    <table>
+                                        <tr>
+                                            <td>Flickenger </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Brokaw</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Zanker Parkinglot</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Main Street</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Casey Court</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Top Five Players
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                <div class="card-body">
+                                    <table>
+                                        <tr>
+                                            <td>Vinson </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Daryll</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Alex</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jacky</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Greg</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>                
+                        </div>               
+                    </div>
+               </div>
+            </div>
+        </div> <!-- end container -- >
+    </body>
+</html>

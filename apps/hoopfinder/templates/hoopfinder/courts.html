@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HoopFinder</title>
+        <!-- {% load static %} -->
+        <!-- <link rel="stylesheet" type="text/css" href="{% static 'hoopfinder/css/styles.css' %}"> -->
+        <link rel="stylesheet" type="text/css" href="../../static/hoopfinder/css/styles.css">
+    
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+        
+    </head>
+    <body>
+
+        <!-- make the navigation bar on its own file and just attach it in every page -->
+    
+        <div class="container" id="courtsbody">
+            <div class = "navigationbar">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="#">HoopFinder!</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                        <a class="nav-item nav-link active" href="/home">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="#">Maps</a>
+                        <a class="nav-item nav-link" href="#">Users</a>
+                        <a class="nav-item nav-link" href="/courts">Courts</a>
+                        <a class="nav-item nav-link" href="/logout">Logout</a>
+                        
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">Come see me cuh!</h1>
+                    <p class="lead">Find the best court that suits you</p>
+                    <a href="hoopfinder/new_court">add a court</a>
+                </div>
+            </div>
+            
+            <div class="courtsdiv">
+                <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+                    <!-- populating the courts -->    
+                    {% for x in all_courts %}
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="courtthumbnail">
+                            <a href="courts/{{x.id}}"><img src="{{x.imagelink}}" alt=""></a>
+                            <div class="courtinfo">
+                                <p class="text-capitzlize"><a href="courts/{{x.id}}">{{x.name}}</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>  <!-- end of row -->
+            </div>     <!-- end of courtsdiv -->
+        </div>      <!-- end of container and id=courtsbody -->
+
+    </body>
+</html>
+    
+
+
+

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HoopFinder Login</title>
+    <!-- {% load static %} -->
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'hoopfinder/css/styles.css' %}"> -->
+    <link rel="stylesheet" type="text/css" href="../../static/hoopfinder/css/styles.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="container" id="loginbody">
+
+        <div class="navigationbar">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">HoopFinder!</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="#">Maps</a>
+                    <a class="nav-item nav-link" href="#">Users</a>
+                    <a class="nav-item nav-link" href="#">Courts</a>
+                    <a class="nav-item nav-link" href="/logout">Logout</a>
+                    
+                    </div>
+                </div>
+            </nav>
+        </div>                  <!-- end of navigationbar -->
+
+
+
+        <div class="col-md-5 center-block">
+            <div class="logindiv">
+                <h3>Login</h3>
+                <div class="boxmargin">
+                    <form action="/login_post" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true" class="iconmargin"></i></span>
+                                <input type="email" class="form-control form-control-sm" name="email" placeholder="email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span id="iconmargin" class="input-group-addon"><i class="fa fa-lock fa" aria-hidden="true" class="iconmargin"></i></span>
+                                <input type="password" class="form-control form-control-sm" name="password" placeholder="password">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block">Login</button>
+                    </form>
+                </div>
+            </div> 
+        </div>       
+        
+        
+    </div>  <!-- end of container -->
+    
+</body>
+</html>
