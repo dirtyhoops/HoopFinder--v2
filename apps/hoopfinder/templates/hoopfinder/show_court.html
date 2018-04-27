@@ -113,6 +113,12 @@
                                         </div>
                                     </div>
                                     <p>{{x.court_review}}</p>
+                                    {% if x.court_review_by.id == request.session.userid %}
+                                    <form action="/delete_review/{{x.id}}" method="post">
+                                        {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger btn-sm float-right">Delete</a>
+                                    </form>
+                                    {% endif %}
                                 </div>
                             </div>
                             {% endfor %}
@@ -164,6 +170,7 @@
                                 <button type="button" class="btn btn-outline-dark btn-sm btn-block">April 30, 2018   3:30PM</button>
                                 <button type="button" class="btn btn-outline-dark btn-sm btn-block">May, 2 2018   12:00PM</button>
                                 <button type="button" class="btn btn-outline-dark btn-sm btn-block">May 4, 2018   9:00AM</button>
+                                <button type="button" class="btn btn-dark btn-sm btn-block">Create an Event</button>
                             
                             </div>
                         </div>

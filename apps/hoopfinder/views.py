@@ -188,3 +188,9 @@ def add_user_review(request):
         UserReviews.objects.create(review = review, reviewed_user = reviewed_user, reviewed_by = reviewer)
 
         return redirect("/user/"+id)
+
+def delete_review(request, id):
+    if request.method == 'POST':
+        review = Court_Review.objects.get(id = id)
+        review.delete()
+    return redirect('/courts/' + str(request.session['courtid']))

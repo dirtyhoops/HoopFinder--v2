@@ -19,5 +19,7 @@ urlpatterns = [
     url(r'^checkin$', views.checkin),
     url(r'^courts/(?P<id>\d+)$', views.show_court),
     url(r'^user/(?P<user_id>\d+)$', views.user_page),
-    url(r'^add_user_review$', views.add_user_review)
+    url(r'^add_user_review$', views.add_user_review),
+    url(r'^delete_review/(?P<id>\d+)$', views.delete_review)
+    
 ]  
