@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HoopFinder</title>
+        <!-- {% load static %} -->
+        <!-- <link rel="stylesheet" type="text/css" href="{% static 'hoopfinder/css/styles.css' %}"> -->
+        <link rel="stylesheet" type="text/css" href="../../static/hoopfinder/css/styles.css">
+    
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+        
+    </head>
+    <body>
+
+        <!-- make the navigation bar on its own file and just attach it in every page -->
+    
+        <div class="container" id="userdashbody">
+            <div class = "navigationbar">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <a class="navbar-brand" href="#">HoopFinder!</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                        <a class="nav-item nav-link active" href="/home">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="/map">Maps</a>
+                        <a class="nav-item nav-link" href="/user_dashboard">Users</a>
+                        <a class="nav-item nav-link" href="/courts">Courts</a>
+                        <a class="nav-item nav-link" href="/registration">Register</a>
+
+                        {%if request.session.userid == 0 %}
+                        <a class="nav-item nav-link" href="/login">Login</a>
+                        {% else %}
+                        <a class="nav-item nav-link" href="/logout">Logout</a>
+                        {% endif %}
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+
+
+
+
+
+            <div class="userpagemaindiv">
+
+                <div class="uppercontentuser">
+                    <div class="userprofilepicture">
+                        <img class="userprofileicon" src="../../static/hoopfinder/img/usericon.png">
+                    </div>
+                    <div class="userprofileinfo">
+                        <div class="username">
+                            <p>Daryll Osis</p>
+                        </div>
+                        <div class="userprofile">
+                            <div class="userprofilecol1">
+                                <p>Rating: *****</p>
+                                <p>Position: Point Guard</p>
+                                <p>Location: San Jose, CA</p>
+                            </div>
+                            <div class="userprofilecol2">
+                                <p>Age: 27</p>
+                                <p>Height: 5'6"</p>
+                                <p>Gender: Male</p>
+                            </div>
+                        </div>
+                        <!-- make sure to check if session is same as current userid for this button and if it's not add a button for add friend -->
+                        <div class="editprofilediv">
+                            <a class="btn btn-light btn-sm" href="#">Edit Profile</a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                     
+                    <div class="col-lg-3" id="leftcontentuser">
+                        <div class="friendlist">
+                            <!-- change the number depends on the users friends -->
+                            <h5 class="text-center">Friends</h5>
+                        
+<!--###################### CHANGE THIS AND PULL THE FRIENDS FROM DATABASE -->
+                            <div class="frienddiv">
+                                <img class="friendicon" src="../../static/hoopfinder/img/usericon.png" alt="">
+                                <div class="friendname">
+                                    <p class="text-center">Friend1</p>
+                                </div>
+                            </div>
+
+                            <div class="frienddiv">
+                                <img class="friendicon" src="../../static/hoopfinder/img/usericon.png" alt="">
+                                <div class="friendname">
+                                    <p class="text-center">Friend1</p>
+                                </div>
+                            </div>
+
+                            <div class="frienddiv">
+                                <img class="friendicon" src="../../static/hoopfinder/img/usericon.png" alt="">
+                                <div class="friendname">
+                                    <p class="text-center">Friend1</p>
+                                </div>
+                            </div>
+
+                            <div class="frienddiv">
+                                <img class="friendicon" src="../../static/hoopfinder/img/usericon.png" alt="">
+                                <div class="friendname">
+                                    <p class="text-center">Friend1</p>
+                                </div>
+                            </div>
+
+                            <div class="frienddiv">
+                                <img class="friendicon" src="../../static/hoopfinder/img/usericon.png" alt="">
+                                <div class="friendname">
+                                    <p class="text-center">Friend1</p>
+                                </div>
+                            </div>
+
+                            <!-- change the number into total friends -->
+                            <h6 class="text-center">See all(10)</h6>
+                        </div>
+                    </div>   <!-- end of lelfcontentuser -->
+                  
+                       
+
+
+
+                    <div class="col-lg-6" id="maincontentuser">
+                        <div class="favoritecourtdiv">
+                            <h5 class="text-center">My Home Court</h5>
+                            <div class="favediv">
+                                <!-- run a loop that pulls up the last favorite courts with its latest comment -->
+                                <!-- have the picture on the left with the name of the court under the picture and then the latest comment of the court on the right side of the div  -->
+                                <div class="favecourt">
+                                    <div class="favecourtpic">
+                                        
+                                    </div>
+                                    <div class="favecourtreview">
+                                        <!-- put the latest review -->
+                                    </div>
+                                </div>
+                                <div class="favecourt"></div>
+                            </div>
+                        </div>
+
+
+       <!-- CHANGE EVERY DATA INSIDE WITH THE REVIEW FOR THE PLAYERS -->
+                        <div class="courtreviewdiv">
+                            <div class="reviewheader">
+                                <h5 class="text-center">Player's Reviews</h5>
+                            </div>
+                                <!-- gets all the reviews for the courts -->
+                                {% for x in user_reviews %}
+                                <div class="rowreview">
+                                        <div class="reviewauthor">
+                                            <div class="reviewauthorimage">
+                                                <img class="reviewimage" src="../static/hoopfinder/img/usericon2.png" alt="">
+                                            </div>
+                                            <p class ="userreviewname"><a class ="text-capitalize" href="/user/{{x.reviewed_by.id}}">{{x.reviewed_by.first_name}} {{ x.reviewed_by.last_name|slice:"1" }}.</a></p>
+                                            <p>San Jose, CA</p>
+                                            <p>Rating: ★★★★★</p>
+                                        </div>
+                                        <div class="reviewtext">
+                                            <div class="reviewratedate">
+                                                <div class="reviewstar">
+                                                {% if x.rating == 1 %}
+                                                <p class="star"> ★</p>
+                                                {%  elif x.rating == 2 %}
+                                                    <p class="star"></p> ★★</p>
+                                                {% elif x.rating == 3 %}
+                                                    <p class="star"> ★★★</p>
+                                                {%  elif x.rating == 4 %}
+                                                    <p class="star"> ★★★★</p>
+                                                {%  elif x.rating == 5 %}
+                                                    <p class="star">  ★★★★★</p>
+                                                {%endif%}
+                                                </div>
+                                                <div class="reviewdate">
+                                                    <p>{{x.created_at}}</p> 
+                                                </div>
+                                            </div>
+                                            <p>{{x.review}}</p>
+                                            {% if x.reviewed_by.id == request.session.userid %}
+<!--FIX THE DELETE ROUTE FOR USER REVIEW--> <form action="/delete_review/{{x.id}}" method="post">
+                                                {% csrf_token %}
+                                            <button type="submit" class="btn btn-danger btn-sm float-right">Delete</button>
+                                            </form>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    <div class="reviewbox">
+                                        <form action="/add_user_review" method="post">
+                                        {% csrf_token %}
+                                            <label class="reviewlabel">Write a review:</label>
+                                            <div class="radios">
+                                                <label class="radio-inline"><input type="radio" name="optrating" value="1"> 1 star</label>
+                                                <label class="radio-inline"><input type="radio" name="optrating" value="2"> 2 stars</label>
+                                                <label class="radio-inline"><input type="radio" name="optrating" value="3"> 3 stars</label>
+                                                <label class="radio-inline"><input type="radio" name="optrating" value="4"> 4 stars</label>
+                                                <label class="radio-inline"><input type="radio" name="optrating" value="5"> 5 stars</label>
+                                            </div>    
+                                            <div class="form-group">
+                                                <textarea id="reviewtextarea" class="form-control" style="font-size: 14px" name="review" rows="3"></textarea>
+                                            </div>
+                                            <input type="hidden" name="reviewed_user" value="{{user.id}}">
+                                            <button type="submit" class="btn btn-dark btn-sm float-right">Submit</button>      
+                                        </form>
+                                    </div>
+                                </div>   <!--end of courtreviewdiv-->
+
+
+
+
+
+                    </div>
+
+
+
+                    <div class="col-lg-3" id="rightcontentuser">
+
+                    </div>
+
+
+                </div>   <!--  end of row -->
+            </div><!--  end of userpagemaindiv -->
+        </div>      <!-- end of container -->
+    </body>
+</html>
+        
+
+
+
+
+
+<!-- 49a76676e913deb3805b87568bba047f      -------- api key for open weather -->
+
+<!-- http://api.openweathermap.org/data/2.5/weather?appid=49a76676e913deb3805b87568bba047f&zip=94040 -->

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HoopFinder Login</title>
+    <!-- {% load static %} -->
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'hoopfinder/css/styles.css' %}"> -->
+    <link rel="stylesheet" type="text/css" href="../../static/hoopfinder/css/styles.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div class="container">
+        <div class="profileformdiv">
+        <form action="/" method="post">
+            {% csrf_tokens %}
+            <div class="form-group">
+                <legend>Select a profile icon:</legend>
+                <label class="radio-inline"><input type="radio" name="optprofileimage" value="../../static/hoopfinder/img/usericon2.png"><img class="profileselect" src="../../static/hoopfinder/img/usericon2.png"></label>
+                <label class="radio-inline"><input type="radio" name="optprofileimage" value="../../static/hoopfinder/img/usericon3.png"><img class="profileselect" src="../../static/hoopfinder/img/usericon3.png"></label>
+                <label class="radio-inline"><input type="radio" name="optprofileimage" value="../../static/hoopfinder/img/usericon4.png"><img class="profileselect" src="../../static/hoopfinder/img/usericon4.png"></label>
+                <label class="radio-inline"><input type="radio" name="optprofileimage" value="../../static/hoopfinder/img/usericon.png"><img class="profileselect" src="../../static/hoopfinder/img/usericon.png"></label>
+            </div>
+            <div class="form-group">
+                <label>Position: </label>
+                <select class="form-control" name="position" id="position">
+                    <option>Point Guard</option>
+                    <option>Shooting Guard</option>
+                    <option>Small Forward</option>
+                    <option>Power Forward</option>
+                    <option>Center</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Age: </label>
+                <input type="number" class="form-control" name="age" id="age">
+            </div>
+            <div class="form-group">
+                <legend class="legendpsize">Height: </legend>
+                <label  class="col-lg-2">Feet: </label>
+                <input type="number"  class="col-lg-3" class="form-control" name="feet" id="feet">
+                <label  class="col-lg-2">Inches: </label>
+                <input type="number"  class="col-lg-3" class="form-control" name="inches" id="inches">
+            </div>
+            <div class="form-group">
+                <legend class="legendpsize">Location:</legend>
+                <label class="col-lg-2">City</label>
+                <input type="text" class="col-lg-3" class="form-control" name="city" id="city">
+                <label class="col-lg-2">State</label>
+                <input type="text" class="col-lg-3" class="form-control" name="state" id="state">
+            </div>
+            <button class="btn btn-primary btn-block">Save Profile</button>
+        </form>
+            
+        </div>
+            
+    </div>  <!-- end of container -->
+    
+</body>
+</html>

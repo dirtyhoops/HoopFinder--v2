@@ -40,7 +40,7 @@ def user_page(request, user_id):
         'user': user,
         'user_reviews': user_reviews
     }
-    return render(request, "hoopfinder/user_dashboard.html", context)
+    return render(request, "hoopfinder/newuserdash.html", context)
 
 def users(request):
     return render(request, "hoopfinder/user_dashboard.html")

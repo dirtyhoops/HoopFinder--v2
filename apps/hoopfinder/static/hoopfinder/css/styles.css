@@ -315,3 +315,131 @@ li {
     margin-left: 10px;
 }
 
+
+
+/****************************** newuserdash.html CSS *******************************/
+
+#userdashbody{
+    background-color: rgb(204, 193, 193);
+    height: 100%;
+    overflow: auto;
+}
+
+.userpagemaindiv {
+    background-color:rgb(204, 193, 193);
+    width: 100%;
+    height: 100%;
+}
+
+/* make sure to change the margin so it's in the middle */
+.uppercontentuser {
+    background-color:rgba(158, 149, 149, 0.336);
+    width: 100%;
+    border-bottom: 2px solid rgba(87, 83, 83, 0.336)
+}
+
+#leftcontentuser {
+    background-color:rgb(204, 193, 193);
+    height: 100%;
+    width: 25%;
+}
+
+#maincontentuser {
+    height: 100%;
+    width: 48%;
+    border-right: 2px solid rgba(87, 83, 83, 0.336);
+    border-left: 2px solid rgba(87, 83, 83, 0.336);
+    background-color: rgb(202, 202, 202);
+}  
+
+#rightcontentuser {
+    height: 900px;
+    width: 25%;
+    background-color: rgb(204, 193, 193);
+}
+
+
+.userprofileicon {
+    margin: 10px 0px;
+    width: 185px;
+    border-radius: 95px;
+    border: 7px outset rgb(163, 133, 133);
+}
+
+
+.userinfo p {
+    margin: 3px;
+    font-size: 15px;
+    margin-left: 15px;
+}
+
+
+
+.userprofilepicture, .userprofileinfo, .userprofilecol1, .userprofilecol2, #rightcontentuser, #leftcontentuser, #rightcontentuser {
+    display: inline-block;
+}
+
+.userprofilepicture {
+    margin: 13px 10px 10px 29%;
+}
+.username p {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.userprofile p {
+    font-size: 15px;
+    margin-top: -5px;
+}
+
+.userprofileinfo {
+    vertical-align: middle;
+    margin-left: 15px;
+
+}
+
+.userprofilecol2 {
+    margin-left: 10px;
+}
+
+.friendicon {
+    margin: 10px 0px;
+    width: 70px;
+    border-radius: 85px;
+    border: 2px solid rgb(134, 89, 89);
+}
+
+.profileselect {
+    margin: 10px 0px;
+    width: 70px;
+    border-radius: 85px;
+    border: 2px solid rgb(134, 89, 89);
+}
+
+.frienddiv {
+    display: inline-block;
+    margin: 5px;
+}
+
+.friendlist {
+    border-bottom: 2px solid rgba(87, 83, 83, 0.336);
+}
+
+.favoritecourtdiv {
+    border-bottom: 2px solid rgba(87, 83, 83, 0.336);
+}
+
+input[type="radio"]{
+    margin: 0px 3px 0px 15px;
+}
+
+.profileformdiv {
+    width: 500px;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.legendpsize {
+    font-size: 19px;
+}
